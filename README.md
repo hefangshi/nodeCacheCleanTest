@@ -13,7 +13,9 @@ Simple Test with Node Cache System
 
 ### require.cache
 
-不可以直接删除 `require.cache` 中的内容，会由于 `parent` 中包含了引用导致内存无法释放
+不可以仅删除 `require.cache` 中的内容，会由于 `parent` 中包含了引用导致内存无法释放
+
+正确做法如下
 
 ```
 module.parent.children.splice(module.parent.children.indexOf(module), 1);
